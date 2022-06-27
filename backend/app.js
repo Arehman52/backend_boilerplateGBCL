@@ -64,6 +64,83 @@ app.use("/api/LabTasks", LabTasksRoutes);
 app.use("/api/StudentActivityHistory", StudentActivityHistoryRoutes);
 app.use("/api/StudentLabData", StudentLabDataRoutes);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 
+ * 
+ * below code is for CLoud Functions for Wowhealth PK/US
+ * 
+ */
+
+
+
+
+
+// export const USERS = [
+//   { name: 'umer', location: 'ca', portalAllowed: 'provider'},
+//   { name: 'shifa', location: 'ca', portalAllowed: 'agency'},
+//   { name: 'bilal', location: 'ca', portalAllowed: 'business'},
+//   { name: 'waseem', location: 'ca', portalAllowed: 'all'},
+//   { name: 'aftab', location: 'ca', portalAllowed: 'affiliate'},
+// ];
+
+// app.use("/route/users", getAllUsers);
+// app.use("/route/user/:userName", getUser);
+// app.use("/route/authorize/user/:userName/portal/:portalName", authorize);
+// app.use("/route", emptyRoute);
+// app.use(getDefault);
+
+// export function emptyRoute(req, res){ res.status(404).json("Empty Params, enter params after /route/ in URL.")}
+// export function getDefault(req, res){ res.status(404).json("Bad URL, error 404!")}
+// export function getAllUsers(req, res){res.status(404).json(USERS)}
+// export function authorize(req, res){
+//   const {userName, portalName} = req.params;
+//   const user = USERS.filter(x => x.name == userName)[0];
+//   if(user){
+//     user.portalAllowed == portalName || user.portalAllowed == 'all' ? res.status(200).send("Authorization Successful!") :
+//     res.status(404).send("Authorization Failed, User cant access entered portal, try :"+user.portalAllowed)
+//   }else{
+//     res.status(404).send("Authorization Failed because this user was not found!")
+//   }
+// }
+// export function getUser(req, res){
+//   const userName = req.params.userName;
+//   const user = USERS.filter(x => x.name == userName)[0];
+//   user ? res.status(200).send(printUser(user)) :
+//   res.status(404).send("This User Was Not Found.")
+// }
+// export function printUser(user){
+//   return "User : "+user.name+", and this user's location is : "+user.location+", and this user has access to "+user.portalAllowed+" portal(s)."
+// }
 module.exports = app;
 
 
