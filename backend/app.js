@@ -9,6 +9,7 @@ const StudentAttemptedLabChallengesRoutes = require('./routes/student-attempted-
 const StudentLabDataRoutes = require('./routes/student-lab-data-routes');
 const LabsRoutes = require('./routes/labs-routes');
 const LabChallengesRoutes = require('./routes/labChallenges-routes');
+const AppointmentsDataRoutes = require('./routes/appointments-routes');
 
 
 
@@ -17,7 +18,8 @@ const app = express();
 
 
 // following line establishes the connection with GBCLDatabase.
-mongoose.connect("mongodb+srv://abdurrehman:MvceaEr8JnRkWkl7@cluster0.jlslm.mongodb.net/GBCLDatabse",{ useNewUrlParser: true,
+// mongoose.connect("mongodb+srv://abdurrehman:MvceaEr8JnRkWkl7@cluster0.jlslm.mongodb.net/GBCLDatabse",{ useNewUrlParser: true,
+mongoose.connect(`mongodb://abdurrehman:MvceaEr8JnRkWkl7@cluster0-shard-00-00.jlslm.mongodb.net:27017,cluster0-shard-00-01.jlslm.mongodb.net:27017,cluster0-shard-00-02.jlslm.mongodb.net:27017/?ssl=true&replicaSet=atlas-oze3lo-shard-0&authSource=admin&retryWrites=true&w=majority`,{ useNewUrlParser: true,
 useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to DB.");
@@ -63,6 +65,7 @@ app.use("/api/Users", UsersRoutes);
 app.use("/api/LabTasks", LabTasksRoutes);
 app.use("/api/StudentActivityHistory", StudentActivityHistoryRoutes);
 app.use("/api/StudentLabData", StudentLabDataRoutes);
+app.use("/api/Appointments", AppointmentsDataRoutes);
 
 
 
