@@ -3,13 +3,11 @@ const express = require("express");
 const Appoinmtnets = require("../models/testModels/appointments");
 const router = express.Router();
 
-
-
 router.get("/getAppointments", (req, res, next) => {
   Appoinmtnets.find().then((documents) => {
     res.status(200).json({
       message: "this is a list of all appointmnets recieved from DB",
-      appointmnets: documents,
+      appointments: documents,
     });
 
     console.log("   ==> {/RecieveUsersFromDB} Users were downloaded.");
@@ -28,6 +26,7 @@ router.post("/CreateAppointment", (req, res, next) => {
     .save()
     .then((result) => {
       res.status(201).json({
+        isSuccess: true,
         message: "Appointment has been created succefully!",
         result: result,
       });
@@ -40,13 +39,19 @@ router.post("/CreateAppointment", (req, res, next) => {
 });
 
 
-router.delete("/delete/appointmentId/:Id", (req, res, next) => {
-  Appoinmtnets.deleteOne({ _id: req.params.Id }).then((result) => {
-    res.status(200).json({
-      message: "Appointment Deleted!",
-      result: result,
+router.delete("/delete/appointmentId/:id", (req, res, next) => {
+  Appoinmtnets.deleteOne({ _id: req.params.id }).then((result) => {
+    Appoinmtnets.find().then((documents) => {
+      res.status(200).json({
+        message: "Appointment Deleted!",
+        appointments: documents,
+      });
+  
+      console.log("   ==> {/delete/appointmentId/:id} Appt. was deleted.");
     });
   });
 });
 
 module.exports = router;
+
+
